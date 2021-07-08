@@ -25,7 +25,7 @@
 #include <ArduinoJson.h>
 
 int tiempo = 3; //Tiempo del escaneo en segundos
-int tamano = 14; // Tamaño de la matriz a recorrer
+int tamano = 4; // Tamaño de la matriz a recorrer
 BLEScan* Sondeo; // Creacion de un escaner
 int dato1, dato2, dato3, dato4; //señales(dB) de cada baliza
 String direccion; //direccion MAC
@@ -226,29 +226,33 @@ void loop() {
           if(dato1!= NULL){
             JsonObject obj = arr.createNestedObject();
             obj["id-abliza"] = "1";
-            //obj["pos-x"] = "1";
-            //obj["pos-y"] = "1";
+            obj["pos-x"] = "14";
+            obj["pos-y"] = "0";
+            obj["distancia"]  =  sqrt(pow((i-14), 2) + pow((j-0), 2));
             obj["señal"] = baliza1[i][j];
           }
           if(dato2!= NULL){
             JsonObject obj2 = arr.createNestedObject();
             obj2["id-abliza"] = "2";
-            //obj2["pos-x"] = 1;
-            //obj2["pos-y"] = 1;
+            obj2["pos-x"] = 1;
+            obj2["pos-y"] = 1;
+            obj2["distancia"]  =  sqrt(pow((i-14), 2) + pow((j-0), 2));
             obj2["señal"] = baliza2[i][j];
           }
           if(dato3!= NULL){
             JsonObject obj3 = arr.createNestedObject();            
             obj3["id-abliza"] = "3";
-            //obj3["pos-x"] = 1;
-            //obj3["pos-y"] = 1;
+            obj3["pos-x"] = 1;
+            obj3["pos-y"] = 1;
+            obj3["distancia"]  =  sqrt(pow((i-14), 2) + pow((j-0), 2));
             obj3["señal"] = baliza3[i][j];
           }
           if(dato4 != NULL){
             JsonObject obj4 = arr.createNestedObject();
             obj4["id-abliza"] = "4";
-            //obj4["pos-x"] = 1;
-            //obj4["pos-y"] = 1;
+            obj4["pos-x"] = 1;
+            obj4["pos-y"] = 1;
+            obj4["distancia"]  =  sqrt(pow((i-14), 2) + pow((j-0), 2));            
             obj4["señal"] = baliza4[i][j];
           }
           if(dato1 == NULL && dato2 == NULL && dato3 == NULL && dato4 == NULL){
